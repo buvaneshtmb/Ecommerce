@@ -42,3 +42,48 @@
         </form>
 
     </div>
+
+
+    <script>
+        const form1=document.getElementById('form');
+
+        form1.addEventListener('submit',event =>{
+            event.preventDefault();
+
+            const fname=document.getElementById('fname').value
+            console.log(fname)
+
+            const uname=document.getElementById('uname').value
+            console.log(uname)
+
+            const mnumber=document.getElementById('mnumber').value
+            console.log(mnumber)
+
+            const gmail=document.getElementById('gmail').value
+            console.log(gmail)
+
+            const pwd=document.getElementById('pwd').value
+            console.log(pwd)
+
+            fetch("https://63b3e718ea89e3e3db50a55b.mockapi.io/user",{
+                method:'POST',
+                body:JSON.stringify({
+                    fullname:fname,
+                    username:uname,
+                    mobilenumber:mnumber,
+                    gmail:gmail,
+                    password:pwd
+                }),
+                headers:{
+                    "Content-Type":"application/json; charset=UTF-8"
+                }
+            })
+            .then(function(response){
+                return response.json()
+            })
+            .then(function(data){
+                console.log(data)
+            })     
+
+        });
+    </script>
