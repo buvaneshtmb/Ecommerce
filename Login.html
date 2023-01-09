@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@100;200;300;400;600;700&display=swap" rel="stylesheet">
+    <title>Login</title>
+    <link rel="stylesheet" href="style.css">
+    <script></script>
+</head>
+<body>
+
+    <div class="full">
+     <h2 class="header">Ecommerce</h2>
+     <form id="form">
+      <div class="lab">
+          <div class="lab1">
+             <label for="id">ID</label>
+             <input type="text" id="id" placeholder="Enter the Id" autofocus>
+          </div>
+         <div class="lab2">
+             <label for="password">Password</label>
+             <input type="password" id="password" placeholder="Enter the Password">
+         </div>
+      </div>
+      <div class="log">
+        <input type="submit" value="Login">
+      </div>
+     </form>
+     <div class="register">
+        <p>Don't have an account?<a id="singup">Sign_up</a></p>
+     </div>
+    </div>
+
+    <script>
+        const form1 = document.getElementById('form');
+
+     
+
+        form1.addEventListener('submit',event => {
+            event.preventDefault();
+            console.log("hi")
+
+            getuser()
+
+            async function getuser(){
+
+                const id=document.getElementById('id').value
+                console.log(id)
+
+                const pwd=document.getElementById('password').value
+                console.log(pwd)
+
+                const api=await fetch(`https://63b3e718ea89e3e3db50a55b.mockapi.io/user/${id}`);
+                const obj=await api.json();
+                console.log(obj)
+                const username=obj.username;
+                const password=obj.password;
+                console.log(username)
+
+                if(password != pwd){
+                    alert("password is wrong")
+                    document.getElementById('id').value=""
+                    document.getElementById('password').value=""
+                }
+                else{
+                    sessionStorage.setItem("username",username)
+                    window.location="Home.html"
+                }
+
+                <!-- show(obj); -->
+            }
+
+        });
+                
+        document.getElementById("singup").onclick=function(){
+            console.log("hlo")
+            window.location="Register.html";
+        };
+        
+    </script>  
+</body>
+
+</html>

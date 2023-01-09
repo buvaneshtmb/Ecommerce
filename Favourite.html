@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Favourite</title>
+    <style>
+        table, td, th {
+          border: 1px solid;
+        }
+        
+        table {
+          width: 50%;
+          border-collapse: collapse;
+        }
+        .center {
+            margin-left: auto; 
+            margin-right: auto;
+          }
+        th,tr{
+            height: 50px;
+        }
+        td{
+            text-align: center ;
+        }
+        tr:hover{
+            background-color: coral;
+        }
+        tr:nth-child(even){
+            background-color: #f2f2f2;
+        }
+        </style>
+</head>
+<body>
+    <div>
+        <table class="center">
+            <tr>
+                <th>Product Name</th>
+                <th>Quantity</th>
+                <th>Selling price</th>
+                <th>Remove</th>
+            </tr>
+            <tr class="data">
+                <td id="pn"></td>
+                <td id="quantity"></td>
+                <td id="sl"></td>
+                <td><button>Remove</button></td>
+            </tr>
+
+        </table>
+    </div>
+    <script>
+        const pn=sessionStorage.getItem("pn");
+        const quantity=sessionStorage.getItem("quantity");
+        const sl=sessionStorage.getItem("sl");
+
+        document.getElementById("pn").innerHTML=pn;
+        document.getElementById("quantity").innerHTML=quantity;
+        document.getElementById("sl").innerHTML=sl;
+
+    </script>
+</body>
+</html>

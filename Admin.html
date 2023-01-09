@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Admin</title>
+    <link rel="stylesheet" href="adminstyle.css">
+
+
+</head>
+<body>
+    <div class="navbar">
+        <h5  class="home">Admin Page</h5>
+        <ul class="ul">
+            <li><a id="addPost">Add Post</a></li>
+            <li><a id="addMember">Add Member</a></li>
+            <li><a id="notification">Notification</a></li>
+            <li><a id="logout">Logout</a></li>
+            <li><a id="admin"></a></li>
+        </ul>
+        <input class="search" type="text" placeholder="Search here">
+    </div>
+</body>
+</html>
+<script>
+
+    const username=sessionStorage.getItem("username");
+
+    document.getElementById("admin").innerHTML=username;
+
+    document.getElementById("logout").onclick=function(){
+        console.log("hi")
+        sessionStorage.clear();
+        window.location="Login.html";
+    }
+
+    document.getElementById("addMember").onclick=function(){
+        window.location="NewMember.html"
+    }
+
+    document.getElementById("addPost").onclick=function(){
+        <!-- window.location="AddPost.html" -->
+    }
+</script>

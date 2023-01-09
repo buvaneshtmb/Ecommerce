@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@100;200;300;400;600;700&display=swap" rel="stylesheet">
+    <title>Register</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <div class="container">
+        <div>
+            <h2>Ecommerce</h2>
+        </div>
+        <form class="roll">
+            <div class="form1">
+                <label for="pname">Product Name</label>
+                <input type="text" name="pname" id="pname" placeholder="Enter the Product Name" autofocus>
+            </div>
+            <div class="form1">
+                <label for="file">Image</label>
+                <input type="file" name="file" id="file" >
+            </div>
+            <div class="form1">
+                <label for="quantity">Quantity</label>
+                <input type="text" name="quantity" id="quantity" placeholder="Enter the Quantity">
+            </div>
+            <div class="form1">
+                <label for="oprice">Original Price</label>
+                <input type="text" name="oprice" id="oprice" placeholder="Enter the Orinal Price">
+            </div>
+            <div class="form1">
+                <label for="sprice">Selling Price</label>
+                <input type="text" name="sprice" id="sprice" placeholder="Enter the Selling Price" >
+            </div>
+            <div class="form1">
+                <label for="desc">Description</label>
+                <textarea name="desc" id="desc" placeholder="Enter the Description" ></textarea>
+            </div>
+            <div class="but">
+            <button type="submit" id="">Add Post</button>
+           </div>
+        </form>
+
+    </div>
+
+
+    <script>
+
+        const form=document.querySelector('form');
+
+        form.addEventListener("submit",(e) =>{
+            e.preventDefault();
+
+            const formDa=new FormData(form);
+
+            for(item of formDa){
+                console.log(item[0],item[1])
+            };
+
+            fetch("https://63b3e718ea89e3e3db50a55b.mockapi.io/products",{
+                method: "POST", 
+                body: formDa,
+                mode: 'no-cors',
+            })
+            .then(res => res.json())
+            .then(res => console.log(res))
+            .catch(err => console.log(err));
+
+        });
+
+
+    </script>
