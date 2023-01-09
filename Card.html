@@ -47,7 +47,7 @@
                 <td id="pn"></td>
                 <td id="quantity"></td>
                 <td id="sl"></td>
-                <td>0</td>
+                <td id="total">0</td>
                 <td><button onclick="remove()">Remove</button></td>
             </tr>
 
@@ -58,9 +58,14 @@
         const quantity=sessionStorage.getItem("quantity1");
         const sl=sessionStorage.getItem("sl1");
 
+
+        let qu=parseInt(quantity.value,10);
+        console.log(qu)
+
         document.getElementById("pn").innerHTML=pn;
         document.getElementById("quantity").innerHTML=quantity;
         document.getElementById("sl").innerHTML=sl;
+
 
        
 
